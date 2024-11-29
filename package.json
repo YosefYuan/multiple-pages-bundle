@@ -1,0 +1,32 @@
+{
+  "name": "multiple-pages-bundle",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YosefYuan/multiple-pages-bundle.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YosefYuan/multiple-pages-bundle/issues"
+  },
+  "homepage": "https://github.com/YosefYuan/multiple-pages-bundle#readme",
+  "dependencies": {
+    "jquery": "^3.7.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "glob": "^11.0.0",
+    "html-webpack-plugin": "^5.6.3",
+    "path": "^0.12.7",
+    "webpack": "^5.96.1",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^5.1.0"
+  }
+}
