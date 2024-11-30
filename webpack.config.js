@@ -9,12 +9,12 @@ const setMPA = () => {
     const htmlPlugins = [];
 
     // scan all the folder in 'src/pages'
-    const pagePaths = glob.sync(path.resolve(__dirname, 'src/pages/*/index.js'));
+    const pagePaths = glob.sync(path.join(__dirname, 'src', 'pages', '*', 'index.js'));
 
     pagePaths.forEach((filePath) => {
-        const pageName = filePath.match(/src\/pages\/(.*)\/index\.js/)[1]; // get file name
+        console.log('filePaht', filePath);
+        const pageName = filePath.match(/src\\pages\\(.*)\\index\.js/)[1]; // get file name
         entry[pageName] = filePath;
-
         htmlPlugins.push(
             new HtmlWebpackPlugin({
                 template: path.resolve(__dirname, `src/pages/${pageName}/index.html`),
@@ -28,6 +28,8 @@ const setMPA = () => {
 };
 
 const { entry, htmlPlugins } = setMPA();
+console.log('entry', entry);
+console.log('htmlPlugins', htmlPlugins);
 
 module.exports = {
     entry,
@@ -52,7 +54,7 @@ module.exports = {
                 test: /\.(png|jpe?g|gif|svg)$/,
                 use: [
                     {
-                        load: 'file-loader',
+                        loader: 'file-loader',
                         options: {
                             name: 'images/[name].[hash].[ext]'
                         }
@@ -65,7 +67,9 @@ module.exports = {
         ...htmlPlugins,
     ],
     devServer: {
-        contentBase: path.resolve(__dirname, 'dist'),
+        static: {
+            directory: path.resolve(__dirname, 'dist'), // Directory to serve static files from
+        },
         open: true,
         hot: true,
         port: 3000,
